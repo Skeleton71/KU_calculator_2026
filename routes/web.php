@@ -10,3 +10,8 @@ Route::post('/result',[\App\Http\Controllers\CalculatorController::class,'result
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('bmi')->group(function () {
+    Route::get('/', [App\Http\Controllers\BmiController::class, 'index'])->name('bmi.index');
+    Route::post('/calculate', [App\Http\Controllers\BmiController::class, 'calculate'])->name('bmi.calculate');
+    Route::get('/history', [App\Http\Controllers\BmiController::class, 'history'])->name('bmi.history');
+});
